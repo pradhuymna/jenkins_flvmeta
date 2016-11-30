@@ -1,0 +1,17 @@
+replace gryphon with grypiaura
+perl -i.bak  -p -e 's/old/new/g;' *.config
+perl -i -p -e 's/gryphon/grypiaura/g;' *.*
+
+Modified files
+--------------
+/home/bhagavan/sources/wireshark/wireshark-1.6.7/configure.in
+/home/bhagavan/sources/wireshark/wireshark-1.6.7/Makefile
+/home/bhagavan/sources/wireshark/wireshark-1.6.7/CMakeLists.txt
+/home/bhagavan/sources/wireshark/wireshark-1.6.7/packaging/nsis/Makefile.nmake
+/home/bhagavan/sources/wireshark/wireshark-1.6.7/packaging/nsis/Makefile.nmake
+/home/bhagavan/sources/wireshark/wireshark-1.6.7/epan/Makefile.am
+/home/bhagavan/sources/wireshark/wireshark-1.6.7/plugins/Makefile
+/home/bhagavan/sources/wireshark/wireshark-1.6.7/plugins/Makefile.am
+/home/bhagavan/sources/wireshark/wireshark-1.6.7/plugins/Makefile.in
+/home/bhagavan/sources/wireshark/wireshark-1.6.7/plugins/Makefile.nmake
+

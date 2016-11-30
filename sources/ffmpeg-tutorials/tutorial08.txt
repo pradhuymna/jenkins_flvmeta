@@ -1,0 +1,102 @@
+## An ffmpeg and SDL Tutorial
+
+Page 1 2 3 4 5 6 7 8 End Prev Home Next  
+
+Printable version Text version
+
+## Tutorial 08: Software Scaling
+
+Code: tutorial08.c
+
+### libswscale
+
+ffmpeg has recently added a new interface, libswscale to handle image scaling.
+Whereas before in our player we would use img_convert to go from RGB to YUV12,
+we now use the new interface. This new interface is more modular, faster, and
+I believe has MMX optimization stuff. In other words, it's the preferred way
+to do scaling. 
+
+The basic function we're going to use to scale is sws_scale. But first, we're
+going to have to set up what's called an SwsContext. This allows us to compile
+the conversion we want, and then pass that in later to sws_scale. It's kind of
+like a prepared statement in SQL or a compiled regexp in Python. To prepare
+this context, we use the sws_getContext function, which is going to want our
+source width and height, our desired width and height, the source format and
+desired format, along with some other options and flags. Then we use sws_scale
+the same way as img_convert except we pass it our SwsContext: 
+    
+    
+    #include <ffmpeg/swscale.h> // include the header!
+    
+    int queue_picture(VideoState *is, AVFrame *pFrame, double pts) {
+    
+      static struct SwsContext *img_convert_ctx;
+      ...
+    
+      if(vp->bmp) {
+    
+        SDL_LockYUVOverlay(vp->bmp);
+        
+        dst_pix_fmt = PIX_FMT_YUV420P;
+        /* point pict at the queue */
+    
+        pict.data[0] = vp->bmp->pixels[0];
+        pict.data[1] = vp->bmp->pixels[2];
+        pict.data[2] = vp->bmp->pixels[1];
+        
+        pict.linesize[0] = vp->bmp->pitches[0];
+        pict.linesize[1] = vp->bmp->pitches[2];
+        pict.linesize[2] = vp->bmp->pitches[1];
+        
+        // Convert the image into YUV format that SDL uses
+        if(img_convert_ctx == NULL) {
+          int w = is->video_st->codec->width;
+          int h = is->video_st->codec->height;
+          img_convert_ctx = sws_getContext(w, h, 
+                            is->video_st->codec->pix_fmt, 
+                            w, h, dst_pix_fmt, SWS_BICUBIC, 
+                            NULL, NULL, NULL);
+          if(img_convert_ctx == NULL) {
+    	fprintf(stderr, "Cannot initialize the conversion context!\n");
+    	exit(1);
+          }
+        }
+        sws_scale(img_convert_ctx, pFrame->data, 
+                  pFrame->linesize, 0, 
+                  is->video_st->codec->height, 
+                  pict.data, pict.linesize);
+    
+
+and we have our new scaler in place. Hopefully this gives you a good idea of
+what libswscale can do. 
+
+That's it! We're done! Go ahead and compile your player: 
+    
+    
+    gcc -o tutorial08 tutorial08.c -lavutil -lavformat -lavcodec -lz -lm
+`sdl-config --cflags --libs`
+    
+
+and enjoy your movie player made in less than 1000 lines of C! 
+
+Of course, there's a lot of things we glanced over that we could add. 
+
+_**>>** What's left?_
+
+* * *
+
+Function Reference  
+Data Reference
+
+email:
+dranger at gmail dot com
+Back to dranger.com
+
+This work is licensed under the Creative Commons Attribution-Share Alike 2.5
+License. To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/2.5/ or send a letter to Creative
+Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+ 
+  
+Code examples are based off of FFplay, Copyright (c) 2003 Fabrice Bellard, and
+a tutorial by Martin Bohme. 

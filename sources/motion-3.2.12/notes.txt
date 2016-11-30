@@ -1,0 +1,34 @@
+http://www.codeproject.com/Articles/10248/Motion-Detection-Algorithms
+http://channel9.msdn.com/coding4fun/articles/Laser-Tracking-Camera
+http://channel9.msdn.com/coding4fun/articles/Everyone-Loves-Babies-Webcams-and-Motion-Detection
+
+video
+------
+
+motion_loop : 1138
+motion_detected
+event_ffmpeg_newfile (cnt=0x80a7038, type=4, img=0xb6086008
+event_newfile (cnt=0x80a7038, type=1, dummy=0x0,
+
+
+break motion.c:414
+break event_ffmpeg_newfile
+break image_save_as_preview
+
+
+Breakpoint 1, motion_detected (cnt=0x80a7038, dev=5, img=0x80ada70) at motion.c:383
+Breakpoint 2, process_image_ring (cnt=0x80a7038, max_images=2) at motion.c:478
+Breakpoint 3, event_image_detect (cnt=0x80a7038, type=256, newimg=0xb6086008
+
+--->
+main
+--->motion_startup
+--->ffmpeg_init
+--->start_motion_thread
+
+motion_loop --->motion_init
+			--->vid_next
+			--->motion_detected
+						--->event_ffmpeg_newfile
+						--->event_ffmpeg_put
+						--->event_image_detect

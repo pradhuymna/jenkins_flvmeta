@@ -1,0 +1,17 @@
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:15672           0.0.0.0:*               LISTEN      -               
+tcp        0      0 0.0.0.0:25672           0.0.0.0:*               LISTEN      -               
+tcp        0      0 127.0.1.1:53            0.0.0.0:*               LISTEN      -               
+tcp        0      0 0.0.0.0:21              0.0.0.0:*               LISTEN      -               
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -               
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      -               
+tcp        0      0 127.0.0.1:34287         127.0.0.1:4369          ESTABLISHED -               
+tcp6       0      0 :::6881                 :::*                    LISTEN      3199/ktorrent   
+tcp6       0      0 :::5672                 :::*                    LISTEN      -               
+tcp6       0      0 :::4369                 :::*                    LISTEN      -               
+tcp6       0      0 :::22                   :::*                    LISTEN      -               
+tcp6       0      0 ::1:631                 :::*                    LISTEN      -               
+tcp6       0      0 127.0.0.1:4369          127.0.0.1:34287         ESTABLISHED -               
+tcp6       0      0 127.0.1.1:4369          127.0.0.1:47522         TIME_WAIT   -               
+tcp6       1      0 ::1:46002               ::1:631                 CLOSE_WAIT  -               

@@ -1,0 +1,28 @@
+2) If the code not execute properly, we have to install the required packages and change the token keys etc...
+3) finally we got the out put, check whether the o/p is usefull to us.
+4) we can see the out put means only one word display what we search, so search some words every time ?
+    
+	-> How can search some words means,Go through the search function there we can change string to array of strings.
+	-> finally search the number of words or names by using "SEARCH" keyword at a time.
+		for ex:-
+		  words=['Koffee with Karan ','Nach Baliye','MTV Roadies','Dance India Dance ','Kaun Banega Crorepati']
+
+5) Once again check whether the o/p is usefull or not,more over than it is not 
+	use full because we can find number of un usefull single line statements and
+	URLS repeted twitters names .
+
+6) The main target is Rectifying the 'One line statements' and 'URLs'and repeted 'twits' before the program executes.
+7) So rectifying operations is provided by the Twitter Developers its called"OPERATORS",
+	those can rectify the one line statements and urls and repeted persons.
+
+	for example:-
+		    filter:links 		= containing "words" and linking to URL.
+		    since:2010-12-27 	= containing "words" and sent since date "2010-12-27" (year-month-day).
+			until:2010-12-27 	= containing "words" and sent before the date "2010-12-27"
+            beer -root 			= containing "word" but not "words".
+
+8) These operators are 15 types. we can use operators like these "words -RT -filter:links"
+9) The default twits we can see 15 only, we have to change the count maximum is 100 twits.
+10) There is no problem for language, write number of language words in one array.
+
+

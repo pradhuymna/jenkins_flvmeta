@@ -1,0 +1,2 @@
+Very good explantion about manipulating video files
+	http://dranger.com/ffmpeg/

@@ -1,0 +1,36 @@
+
+first install python 
+follow this link for installation 
+
+http://code.google.com/p/harvestman-crawler/wiki/InstallHarvestMan
+
+first we hav to configure the harvestman with requirements ,
+to start this we have to run this comand 
+
+mohan@aura:~$  harvestman --genconfig
+
+next fill the requirements in browser then submit the form,
+save the file with xml extension 
+then go to that downloaded location and run this command
+
+harvestman -C file.xml
+
+Zettair Installation 
+--------------------
+download the source code from this link 
+http://www.seg.rmit.edu.au/zettair/index.html
+
+And follow the INSTALL 
+
+./configure
+./configure --prefix=/home/mohan/websites/
+
+./make
+./make install
+zet -i sample.html (which file we want to index) check below how to do this
+command.
+
+(mohan@aura:~/sources/zettair/bin$ zet -i /home/mohan/websites/splint/www.splint.org/index.html)
+zet 
+zet --summary=plain( to Check the output text as paragraph)
+
